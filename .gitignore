@@ -1,0 +1,34 @@
+Here are the steps outlined in the image, broken down point by point:
+
+**1. Check Browser Geolocation Support:**
+   - Verify if the user's browser supports the geolocation feature.
+
+**2. Set Geolocation Options:**
+   - Configure geolocation settings for high accuracy, a 5-second timeout, and no caching.
+
+**3. Continuous Location Tracking:**
+   - Employ the `watchPosition` function to monitor the user's location in real-time.
+
+**4. Location Data Transmission:**
+   - Transmit latitude and longitude data using a socket with the event name "send-location."
+   - Log any errors encountered during transmission to the console.
+
+**5. Map Initialization:**
+   - Create a map centered at coordinates (0, 0) with a zoom level of 15 using the Leaflet library.
+   - Incorporate OpenStreetMap tiles into the map for display.
+
+**6. Marker Object Creation:**
+   - Establish an empty object named `markers` to store marker information.
+
+**7. Location Data Handling:**
+   - Upon receiving location data via the socket:
+     - Extract the user ID, latitude, and longitude from the data.
+     - Center the map on the newly received coordinates.
+     - If a marker already exists for the user ID:
+       - Update the marker's position to reflect the new coordinates.
+     - Otherwise, create a new marker at the specified coordinates and add it to the map.
+
+**8. User Disconnection Handling:**
+   - When a user disconnects:
+     - Remove their marker from the map.
+     - Delete their marker information from the `markers` object.
